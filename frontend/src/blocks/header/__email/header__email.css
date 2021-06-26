@@ -7,3 +7,10 @@
     color: white;
     display: inline;
 }
+
+@media screen and (max-width: 550px) {
+  .header__email {
+    padding-bottom: 18px;
+    margin: 0;
+  }
+}

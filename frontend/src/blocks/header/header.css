@@ -19,3 +19,16 @@
     padding: 28px 27px 31px 27px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .header {
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header-sign-in {
+    flex-direction: row;
+  }
+}

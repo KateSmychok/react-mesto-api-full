@@ -4,3 +4,9 @@
     height: 429px;
     margin: 60px auto 112px;
 }
+
+@media screen and (max-width: 550px) {
+  .reg-auth__content {
+    width: 260px;
+  }
+}

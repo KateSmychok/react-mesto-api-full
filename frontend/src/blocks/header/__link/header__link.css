@@ -17,3 +17,17 @@
     color: #A9A9A9;
     padding-left: 24px;
 }
+
+@media screen and (max-width: 550px) {
+  .header__link {
+    font-size: 14px;
+    line-height: 17px;
+    padding-right: 30px;
+  }
+
+  .header__link-sign-out {
+    padding: 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

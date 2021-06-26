@@ -2,11 +2,6 @@
   padding: 67px 0 60px;
 }
 
-.footer-auth {
-  position: fixed;
-  bottom: 0;
-}
-
 @media screen and (max-width: 1023px) {
   .footer {
     padding-left: 27px;

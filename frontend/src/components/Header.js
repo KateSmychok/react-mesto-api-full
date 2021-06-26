@@ -7,6 +7,10 @@ function Header(props) {
     <Switch>
     <Route exact path="/">
       <header className="header">
+        <div className="header__info-top">
+          <p className="header__email">{props.email}</p>
+          <button className="header__link header__link-sign-out button" onClick={props.onSignOut}>Выйти</button>
+        </div>
         <img className="header__logo" src={logo} alt="Логотип"/>
         <div className="header__info">
           <p className="header__email">{props.email}</p>
@@ -15,13 +19,13 @@ function Header(props) {
       </header>
     </Route>
     <Route path="/sign-in">
-      <header className="header">
+      <header className="header header-sign-in">
         <img className="header__logo" src={logo} alt="Логотип"/>
-        <Link to="/sign-up" className="header__link button">Зарегистрироваться</Link>
+        <Link to="/sign-up" className="header__link button">Регистрация</Link>
       </header>
     </Route>
     <Route path="/sign-up">
-      <header className="header">
+      <header className="header header-sign-in">
         <img className="header__logo" src={logo} alt="Логотип"/>
         <Link to="/sign-in" className="header__link button">Войти</Link>
       </header>
