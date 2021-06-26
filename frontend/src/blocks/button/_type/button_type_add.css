@@ -1,0 +1,27 @@
+.button_type_add {
+  width: 150px;
+  height: 50px;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  background: url(../../../images/Add.svg) center no-repeat;
+  background-size: 22px 22px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: 0;
+  align-self: center;
+}
+
+@media screen and (max-width: 1023px) {
+  .button_type_add {
+    margin-right: 27px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button_type_add {
+    margin: 0;
+    width: 282px;
+    background-size: 16px 16px;
+  }
+}

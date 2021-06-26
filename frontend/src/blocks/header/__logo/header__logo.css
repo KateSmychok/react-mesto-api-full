@@ -1,0 +1,3 @@
+.header__logo {
+  width: calc(max(16%, 103px));
+}

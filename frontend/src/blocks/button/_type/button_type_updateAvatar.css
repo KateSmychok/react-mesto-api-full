@@ -1,0 +1,20 @@
+.button_type_updateAvatar {
+  min-height: 26px;
+  min-width: 26px;
+  background: url('../../../images/Avatar.svg') transparent center no-repeat;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  margin: -13px -13px 0 0;
+  border: none;
+  padding: 0;
+  opacity: 0;
+}
+
+.button_type_updateAvatar:hover {
+  opacity: 1;
+}
+
+.button_type_updateAvatar:hover ~ .profile__avatar {
+  opacity: 0.2;
+}

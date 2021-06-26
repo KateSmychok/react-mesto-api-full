@@ -1,0 +1,9 @@
+.profile__userPhoto {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.profile__userPhoto:hover .button_type_updateAvatar {
+  opacity: 1;
+}

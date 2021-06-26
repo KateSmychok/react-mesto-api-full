@@ -1,0 +1,17 @@
+.button_type_like {
+  width: 20px;
+  height: 18px;
+  border: none;
+  padding: 0;
+  background: url(../../../images/Like.svg) center no-repeat;
+  background-size: 100%;
+}
+
+.button_type_like_active {
+  width: 20px;
+  height: 18px;
+  border: none;
+  padding: 0;
+  background: url(../../../images/Like_active.svg) center no-repeat;
+  background-size: 100%;
+}

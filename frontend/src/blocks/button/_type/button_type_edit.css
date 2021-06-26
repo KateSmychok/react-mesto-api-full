@@ -1,0 +1,15 @@
+.button_type_edit {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #fff;
+  background: url(../../../images/Edit.svg) center no-repeat;
+  padding: 0;
+  margin: 0 0 0 18px;
+}
+
+@media screen and (max-width: 767px) {
+  .button_type_edit {
+    width: 18px;
+    height: 18px;
+  }
+}
