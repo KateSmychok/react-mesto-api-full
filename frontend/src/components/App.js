@@ -1,18 +1,18 @@
-import React from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
-import Header from "./Header";
-import Main from "./Main";
-import Footer from "./Footer";
-import ImagePopup from "./ImagePopup";
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlacePopup from "./AddPlacePopup";
-import Login from "./Login";
-import Register from "./Register";
-import api from "../utils/api.js";
+import React from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
+import Login from './Login';
+import Register from './Register';
+import api from '../utils/api.js';
 import * as auth from '../utils/auth.js';
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -41,8 +41,8 @@ function App() {
       auth.getContent(token)
         .then((data) => {
           if (data) {
-            setLoggedIn(true);
             setCurrentUser(data);
+            setLoggedIn(true);
             history.push('/');
           }
         })
