@@ -19,10 +19,13 @@ class Api {
       .then(this._checkResponse);
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        'content-type': "application/json",
+        'authorization': `Bearer ${token}`,
+      },
     })
       .then(this._checkResponse);
   }
@@ -63,7 +66,7 @@ class Api {
   }
 
   likeCard(cardId, isLiked) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     })
@@ -80,10 +83,10 @@ class Api {
 }
 
 const api = new Api({
-  url: "https://mesto.nomoreparties.co/v1/cohort-20",
+  url: 'https://api.even-star.students.nomoredomains.monster',
   headers: {
-    "content-type": "application/json",
-    "authorization": "7669375e-39ff-4166-9493-af9a3aca797d",
+    'content-type': "application/json",
+    'authorization': `Bearer ${localStorage.getItem("token")}`,
   },
 });
 

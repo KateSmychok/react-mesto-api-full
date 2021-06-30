@@ -1,4 +1,4 @@
-export const base_url = 'https://auth.nomoreparties.co';
+export const base_url = 'https://api.even-star.students.nomoredomains.monster';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -8,7 +8,7 @@ function checkResponse(res) {
 }
 
 export const register = (email, password) => {
-  return fetch(`${base_url}/signup`, {
+  return fetch(`${base_url}/sign-up`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -22,20 +22,31 @@ export const register = (email, password) => {
 };
 
 export const authorize = (email, password) => {
-  return fetch(`${base_url}/signin`, {
+  return fetch(`${base_url}/sign-in`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({email, password})
   })
-    .then((response => response.json()))
+    .then(checkResponse)
     .then((data) => {
       if (data.token){
         localStorage.setItem('token', data.token);
         return data;
       }
     })
+    .catch((err) => {
+      console.log(err)
+    })
+};
+
+export const logout = () => {
+  return fetch(`${base_url}/sign-out`, {
+    method: 'GET',
+    credentials: 'same-origin',
+  })
+    .then(checkResponse)
     .catch((err) => {
       console.log(err)
     })
@@ -49,6 +60,8 @@ export const getContent = (token) => {
       'Authorization': `Bearer ${token}`,
     }
   })
-    .then(res => res.json())
-    .then(data => data)
-}
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err)
+    })
+};

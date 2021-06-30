@@ -11,6 +11,7 @@
   "author": "Kate Smychok",
   "license": "ISC",
   "devDependencies": {
+    "cors": "^2.8.5",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.2",
