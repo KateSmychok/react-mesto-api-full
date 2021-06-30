@@ -1,4 +1,4 @@
-export const base_url = 'https://api.even-star.students.nomoredomains.monster';
+export const base_url = 'http://localhost:3001';
 
 function checkResponse(res) {
   if (res.ok) {

@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -20,7 +19,7 @@ const NotFoundError = require('./errors/not-found-err');
 const app = express();
 
 const corsOptions = {
-  origin: ['https://even-star.students.nomoredomains.monster'],
+  origin: ['http://localhost:3000'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Methods', 'Access-Control-Request-Headers'],
   credentials: true,
   enablePreflight: true,
@@ -66,6 +65,6 @@ app.use(errors());
 // Централизованный обработчик ошибок
 app.use(errorHandler);
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 app.listen(PORT);
