@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -16,14 +17,14 @@ const { validateEmailAndPassword } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
 
+const app = express();
+
 const corsOptions = {
   origin: ['https://even-star.students.nomoredomains.monster'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Methods', 'Access-Control-Request-Headers'],
   credentials: true,
   enablePreflight: true,
 };
-
-const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -39,6 +40,12 @@ app.use(requestLogger);
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/sign-in', validateEmailAndPassword, login);
 app.post('/sign-up', validateEmailAndPassword, createUser);

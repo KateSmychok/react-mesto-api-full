@@ -23,19 +23,17 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState({});
   const [cards, setCards] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [isTokenReady, setIsTokenReady] = React.useState(false);
   const history = useHistory();
 
   React.useEffect(() => {
     api.getInitialCards()
       .then((data) => {
-        console.log(data);
         setCards(data);
       })
       .catch((err) => {
         console.log(err);
       })
-  }, [isTokenReady])
+  }, [loggedIn])
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
@@ -55,19 +53,18 @@ function App() {
     auth.authorize(email, password)
       .then((data) => {
         if (data.token) {
-          setLoggedIn(true);
-          setIsTokenReady(true);
+          api.getUserInfo(data.token)
+            .then((data) => {
+              setCurrentUser(data);
+            })
+            .catch((err) => {
+              console.log(err);
+            })
         }
-        return api.getUserInfo(data.token)
-          .then((data) => {
-            setCurrentUser(data);
-          })
-          .catch((err) => {
-            console.log(err);
-          })
       })
       .then(() => {
         setTimeout(() => {
+          setLoggedIn(true);
           history.push('/');
         }, 300)
       })

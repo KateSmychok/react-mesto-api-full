@@ -17,14 +17,18 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && scp -r ./build/* even-star@84.201.167.84:/home/even-star/mesto-frontend"
+    "deploy": "npm run build && scp -r ./build/* even-star@84.201.167.84:/home/even-star/mesto-frontend",
+    "lint": "npx eslint ./"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
+  "eslintIgnore": [
+    "node_modules",
+    "build/*"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",

@@ -11,6 +11,7 @@
     "no-underscore-dangle": ["off", {"allow": ["_id"]}],
     "consistent-return": "off",
     "no-unused-vars": "off",
-    "no-undefined": "off"
+    "no-undefined": "off",
+    "import/no-unresolved": "off"
   }
 }
