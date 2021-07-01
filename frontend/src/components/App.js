@@ -1,3 +1,5 @@
+{/*Кирилл, эндпоинты изменила, у меня работает eslint, вот скрин https://prnt.sc/17u3qj7 */}
+
 import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
