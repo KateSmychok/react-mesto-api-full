@@ -1,4 +1,4 @@
-export const base_url = 'http://localhost:3001';
+export const base_url = 'https://api.even-star.students.nomoredomains.monster';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -8,7 +8,7 @@ function checkResponse(res) {
 }
 
 export const register = (email, password) => {
-  return fetch(`${base_url}/sign-up`, {
+  return fetch(`${base_url}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ export const register = (email, password) => {
 };
 
 export const authorize = (email, password) => {
-  return fetch(`${base_url}/sign-in`, {
+  return fetch(`${base_url}/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export const authorize = (email, password) => {
 };
 
 export const logout = () => {
-  return fetch(`${base_url}/sign-out`, {
+  return fetch(`${base_url}/signout`, {
     method: 'GET',
     credentials: 'same-origin',
   })

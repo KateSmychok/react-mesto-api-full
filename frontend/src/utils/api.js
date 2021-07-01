@@ -83,7 +83,7 @@ class Api {
 }
 
 const api = new Api({
-  url: 'http://localhost:3001',
+  url: 'https://api.even-star.students.nomoredomains.monster',
   headers: {
     'content-type': "application/json",
     'authorization': `Bearer ${localStorage.getItem("token")}`,

@@ -18,16 +18,16 @@ function Header(props) {
           </div>
         </header>
       </Route>
-    <Route path="/sign-in">
+    <Route path="/signin">
       <header className="header">
         <img className="header__logo" src={logo} alt="Логотип"/>
-        <Link to="/sign-up" className="header__link button">Зарегистрироваться</Link>
+        <Link to="/signup" className="header__link button">Зарегистрироваться</Link>
       </header>
     </Route>
-    <Route path="/sign-up">
+    <Route path="/signup">
       <header className="header">
         <img className="header__logo" src={logo} alt="Логотип"/>
-        <Link to="/sign-in" className="header__link button">Войти</Link>
+        <Link to="/signin" className="header__link button">Войти</Link>
       </header>
     </Route>
     </Switch>

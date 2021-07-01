@@ -158,7 +158,7 @@ function App() {
     });
     setLoggedIn(false);
     auth.logout().then(res => res);
-    history.push('/sign-in');
+    history.push('/signin');
   }
 
   return (
@@ -177,10 +177,10 @@ function App() {
             cards={cards}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete} />
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Register submitButtonText='Зарегистрироваться' title='Регистрация' />
           </Route>
-          <Route path="/sign-in">
+          <Route path="/signin">
             <Login submitButtonText='Войти' title='Вход' handleAuthorize={handleAuthorize}/>
           </Route>
         </Switch>

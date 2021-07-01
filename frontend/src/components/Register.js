@@ -34,7 +34,7 @@ function Register(props) {
   function closeInfoToolTip() {
     setIsInfoToolTipOpened(false);
     if (isSuccess) {
-      history.push("/sign-in");
+      history.push("/signin");
     }
   }
 
