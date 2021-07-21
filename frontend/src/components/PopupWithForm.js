@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function PopupWithForm(props) {
   return (
@@ -12,7 +12,7 @@ function PopupWithForm(props) {
         <button type="button" className="button button_type_close" onClick={props.onClose}></button>
       </div>
     </div>
-  )
+  );
 }
 
 export default PopupWithForm;

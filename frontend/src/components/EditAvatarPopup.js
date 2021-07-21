@@ -1,5 +1,5 @@
-import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import React from 'react';
+import PopupWithForm from './PopupWithForm';
 
 function EditAvatarPopup(props) {
   const inputRef = React.useRef();
@@ -7,13 +7,13 @@ function EditAvatarPopup(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props.onUpdateAvatar({
-      avatar: inputRef.current.value
+      avatar: inputRef.current.value,
     });
   }
 
   React.useEffect(() => {
-    inputRef.current.value = ''
-  }, [props.isOpened])
+    inputRef.current.value = '';
+  }, [props.isOpened]);
 
   return (
   <PopupWithForm
@@ -34,7 +34,7 @@ function EditAvatarPopup(props) {
       required/>
     <span className="popup__error" id="avatarLink-error"> </span>
   </PopupWithForm>
-  )
+  );
 }
 
 export default EditAvatarPopup;

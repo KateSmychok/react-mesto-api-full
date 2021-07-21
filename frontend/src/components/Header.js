@@ -1,6 +1,6 @@
-import React from "react";
-import logo from "../images/Logo.svg";
-import { Route, Switch, Link } from "react-router-dom";
+import React from 'react';
+import { Route, Switch, Link } from 'react-router-dom';
+import logo from '../images/Logo.svg';
 
 function Header(props) {
   return (
@@ -31,7 +31,7 @@ function Header(props) {
       </header>
     </Route>
     </Switch>
-  )
+  );
 }
 
 export default Header;

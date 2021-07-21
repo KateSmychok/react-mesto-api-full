@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function Login(props) {
   const [email, setEmail] = React.useState('');
@@ -16,7 +16,7 @@ function Login(props) {
     if (!email || !password) {
       return;
     }
-    props.handleAuthorize(email, password)
+    props.handleAuthorize(email, password);
   }
 
   return (
@@ -52,7 +52,7 @@ function Login(props) {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
 export default Login;

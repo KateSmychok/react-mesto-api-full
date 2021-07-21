@@ -4,16 +4,16 @@ class Api {
     this._headers = config.headers;
   }
 
-  _checkResponse(res) {
+  _checkResponse = (res) => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка ${res.status}`);
+    return Promise.reject(new Error(`Ошибка ${res.status}`));
   }
 
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
-      method: "GET",
+      method: 'GET',
       headers: this._headers,
     })
       .then(this._checkResponse);
@@ -21,10 +21,10 @@ class Api {
 
   getUserInfo(token) {
     return fetch(`${this._url}/users/me`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        'content-type': "application/json",
-        'authorization': `Bearer ${token}`,
+        'content-type': 'application/json',
+        authorization: `Bearer ${token}`,
       },
     })
       .then(this._checkResponse);
@@ -32,42 +32,42 @@ class Api {
 
   setUserInfo(name, about) {
     return fetch(`${this._url}/users/me`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        about: about
-      })
+        name,
+        about,
+      }),
     })
       .then(this._checkResponse);
   }
 
   setAvatar(avatar) {
     return fetch(`${this._url}/users/me/avatar`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatar
-      })
+        avatar,
+      }),
     })
       .then(this._checkResponse);
   }
 
   postNewCard(name, link) {
     return fetch(`${this._url}/cards`, {
-      method: "POST",
+      method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        link: link
-      })
+        name,
+        link,
+      }),
     })
       .then(this._checkResponse);
   }
 
   likeCard(cardId, isLiked) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
-      method: isLiked ? "DELETE" : "PUT",
+      method: isLiked ? 'DELETE' : 'PUT',
       headers: this._headers,
     })
       .then(this._checkResponse);
@@ -75,7 +75,7 @@ class Api {
 
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: this._headers,
     })
       .then(this._checkResponse);
@@ -85,8 +85,8 @@ class Api {
 const api = new Api({
   url: 'https://api.even-star.students.nomoredomains.monster',
   headers: {
-    'content-type': "application/json",
-    'authorization': `Bearer ${localStorage.getItem("token")}`,
+    'content-type': 'application/json',
+    authorization: `Bearer ${localStorage.getItem('token')}`,
   },
 });
 

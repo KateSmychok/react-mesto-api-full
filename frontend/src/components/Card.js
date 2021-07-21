@@ -1,5 +1,5 @@
-import React from "react";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import React from 'react';
+import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function Card(props) {
   const user = React.useContext(CurrentUserContext);
@@ -7,7 +7,7 @@ function Card(props) {
   const cardDeleteButtonClassName = (
     `button ${isOwn ? 'button_type_delete' : 'button_type_delete_hidden'}`
   );
-  const isLiked = props.cardData.likes.some(i => i === user._id);
+  const isLiked = props.cardData.likes.some((i) => i === user._id);
   const cardLikeButtonClassName = (
     `button ${isLiked ? 'button_type_like_active' : 'button_type_like'}`
   );
@@ -36,6 +36,7 @@ function Card(props) {
     </div>
     <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick}></button>
   </li>
-  )}
+  );
+}
 
 export default Card;

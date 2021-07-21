@@ -1,12 +1,16 @@
-import React from "react";
-import Card from "./Card";
+import React from 'react';
+import Card from './Card';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function Main(props) {
   const user = React.useContext(CurrentUserContext);
-  const initialCards = props.cards.map((card) => {
-      return <Card cardData={card} key={card._id} onCardClick={props.onCardClick} onCardLike={props.onCardLike} onCardDelete={props.onCardDelete}/>
-  })
+  const initialCards = props.cards.map((card) => <Card
+      cardData={card}
+      key={card._id}
+      onCardClick={props.onCardClick}
+      onCardLike={props.onCardLike}
+      onCardDelete={props.onCardDelete}
+  />);
 
   return (
     <main className="content">
@@ -28,7 +32,7 @@ function Main(props) {
         <ul className="places">{initialCards}</ul>
       </section>
     </main>
-  )
+  );
 }
 
 export default Main;

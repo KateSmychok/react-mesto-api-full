@@ -1,5 +1,3 @@
-{/*Кирилл, эндпоинты изменила, у меня работает eslint, вот скрин https://prnt.sc/17u3qj7 */}
-
 import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
@@ -12,8 +10,8 @@ import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import Login from './Login';
 import Register from './Register';
-import api from '../utils/api.js';
-import * as auth from '../utils/auth.js';
+import api from '../utils/api';
+import * as auth from '../utils/auth';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function App() {
@@ -34,8 +32,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      })
-  }, [loggedIn])
+      });
+  }, [loggedIn]);
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
@@ -47,33 +45,40 @@ function App() {
             setLoggedIn(true);
             history.push('/');
           }
-        })
+        });
     }
-  }, [])
+  }, []);
 
   function handleAuthorize(email, password) {
     auth.authorize(email, password)
       .then((data) => {
         if (data.token) {
           api.getUserInfo(data.token)
-            .then((data) => {
-              setCurrentUser(data);
+            .then((user) => {
+              setCurrentUser(user);
             })
             .catch((err) => {
               console.log(err);
-            })
+            });
         }
       })
       .then(() => {
         setTimeout(() => {
           setLoggedIn(true);
           history.push('/');
-        }, 300)
+        }, 300);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
-  function handleUpdateUser({name, about}) {
+  function closeAllPopups() {
+    setIsEditProfilePopupOpened(false);
+    setIsAddPlacePopupOpened(false);
+    setIsEditAvatarPopupOpened(false);
+    setIsImagePopupOpened(false);
+  }
+
+  function handleUpdateUser({ name, about }) {
     api.setUserInfo(name, about)
       .then((data) => {
         setCurrentUser(data);
@@ -81,10 +86,10 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
-  function handleUpdateAvatar({avatar}) {
+  function handleUpdateAvatar({ avatar }) {
     api.setAvatar(avatar)
       .then((data) => {
         setCurrentUser(data);
@@ -92,10 +97,10 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
-  function handleAddPlaceSubmit({name, link}) {
+  function handleAddPlaceSubmit({ name, link }) {
     api.postNewCard(name, link)
       .then((newCard) => {
         setCards([newCard, ...cards]);
@@ -103,28 +108,28 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api.likeCard(card._id, isLiked)
       .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+        setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   function handleCardDelete(card) {
     api.deleteCard(card._id)
       .then(() => {
-        setCards((state) => state.filter(c => c._id !== card._id))
+        setCards((state) => state.filter((c) => c._id !== card._id));
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   function handleEditProfileClick() {
@@ -144,22 +149,15 @@ function App() {
     setIsImagePopupOpened(true);
   }
 
-  function closeAllPopups() {
-    setIsEditProfilePopupOpened(false);
-    setIsAddPlacePopupOpened(false);
-    setIsEditAvatarPopupOpened(false);
-    setIsImagePopupOpened(false);
-  }
-
   function handleSignOut() {
     localStorage.clear();
     setCurrentUser({
       name: '',
       about: '',
-      email: ''
+      email: '',
     });
     setLoggedIn(false);
-    auth.logout().then(res => res);
+    auth.logout().then((res) => res);
     history.push('/signin');
   }
 
@@ -188,14 +186,26 @@ function App() {
         </Switch>
         <Footer/>
 
-        {/*Редактировать профиль*/}
-        <EditProfilePopup isOpened={isEditProfilePopupOpened} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+        {/* Редактировать профиль */}
+        <EditProfilePopup
+          isOpened={isEditProfilePopupOpened}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
+        />
 
-        {/*Обновить аватар*/}
-        <EditAvatarPopup isOpened={isEditAvatarPopupOpened} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+        {/* Обновить аватар */}
+        <EditAvatarPopup
+          isOpened={isEditAvatarPopupOpened}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+        />
 
-        {/*Добавить карточку*/}
-        <AddPlacePopup isOpened={isAddPlacePopupOpened} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} />
+        {/* Добавить карточку */}
+        <AddPlacePopup
+          isOpened={isAddPlacePopupOpened}
+          onClose={closeAllPopups}
+          onAddPlace={handleAddPlaceSubmit}
+        />
 
         <ImagePopup
           isOpened={isImagePopupOpened}
@@ -205,7 +215,7 @@ function App() {
 
       </div>
     </CurrentUserContext.Provider>
-  )
+  );
 }
 
 export default App;

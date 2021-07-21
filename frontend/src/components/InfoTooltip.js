@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 function InfoToolTip(props) {
   function successOrFail() {
     let text;
-    if(props.isSuccess) {
-      text = 'Вы успешно зарегистрировались!'
+    if (props.isSuccess) {
+      text = 'Вы успешно зарегистрировались!';
     } else {
-      text = 'Что-то пошло не так! Попробуйте ещё раз.'
+      text = 'Что-то пошло не так! Попробуйте ещё раз.';
     }
     return text;
   }
@@ -19,7 +19,7 @@ function InfoToolTip(props) {
         <button type="button" className="button button_type_close" onClick={props.onClose}></button>
       </div>
     </div>
-  )
+  );
 }
 
 export default InfoToolTip;

@@ -1,6 +1,6 @@
-import React from "react";
-import PopupWithForm from "./PopupWithForm";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import React from 'react';
+import PopupWithForm from './PopupWithForm';
+import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function EditProfilePopup(props) {
   const [name, setName] = React.useState('');
@@ -22,7 +22,7 @@ function EditProfilePopup(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props.onUpdateUser({
-      name: name,
+      name,
       about: description,
     });
   }
@@ -62,7 +62,7 @@ function EditProfilePopup(props) {
         required/>
       <span className="popup__error" id="job-error"> </span>
     </PopupWithForm>
-  )
+  );
 }
 
 export default EditProfilePopup;

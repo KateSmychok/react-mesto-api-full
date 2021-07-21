@@ -1,7 +1,7 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import * as auth from '../utils/auth.js';
-import InfoToolTip from "./InfoTooltip";
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import * as auth from '../utils/auth';
+import InfoToolTip from './InfoTooltip';
 
 function Register(props) {
   const [email, setEmail] = React.useState('');
@@ -34,7 +34,7 @@ function Register(props) {
   function closeInfoToolTip() {
     setIsInfoToolTipOpened(false);
     if (isSuccess) {
-      history.push("/signin");
+      history.push('/signin');
     }
   }
 
@@ -76,8 +76,7 @@ function Register(props) {
       </div>
       <InfoToolTip name="infoToolTip" isOpened={isInfoToolTipOpened} onClose={closeInfoToolTip} isSuccess={isSuccess}/>
     </div>
-  )
+  );
 }
 
 export default Register;
-

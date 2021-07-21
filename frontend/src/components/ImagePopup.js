@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function ImagePopup(props) {
   return (
@@ -9,7 +9,7 @@ function ImagePopup(props) {
         <button type="button" className="button button_type_close button_type_close-fullImage" onClick={props.onClose}></button>
       </div>
     </div>
-  )
+  );
 }
 
 export default ImagePopup;
