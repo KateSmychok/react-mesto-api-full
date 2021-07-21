@@ -26,16 +26,6 @@ function App() {
   const history = useHistory();
 
   React.useEffect(() => {
-    api.getInitialCards()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [loggedIn]);
-
-  React.useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       auth.getContent(token)
@@ -56,6 +46,13 @@ function App() {
           api.getUserInfo(data.token)
             .then((user) => {
               setCurrentUser(user);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          api.getInitialCards()
+            .then((initialCards) => {
+              setCards(initialCards);
             })
             .catch((err) => {
               console.log(err);
