@@ -13,3 +13,8 @@
     padding: 48px 19px 36px;
   }
 }
+
+.footer_fixed {
+  position: fixed;
+  bottom: 0;
+}

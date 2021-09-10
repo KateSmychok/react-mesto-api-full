@@ -10,12 +10,12 @@ function Footer() {
       </footer>
     </Route>
     <Route path="/signin">
-      <footer className="footer footer-auth">
+      <footer className="footer footer_fixed">
         <p className="footer__copyright">&copy;{` Kate Smychok ${new Date().getFullYear()} Mesto Russia`}</p>
       </footer>
     </Route>
     <Route path="/signup">
-      <footer className="footer footer-auth">
+      <footer className="footer footer_fixed">
         <p className="footer__copyright">&copy;{` Kate Smychok ${new Date().getFullYear()} Mesto Russia`}</p>
       </footer>
     </Route>
